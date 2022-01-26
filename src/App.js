@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import SingleTaskList from './Components/SingleTaskList/SingleTaskList'
+import TaskLists from './Components/TaskLists/TaskLists'
+import TaskProvider from './Context/TaskProvider'
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TaskProvider>
+      <Router>
+        <Routes>
+          <Route element={<TaskLists/>} path='/'/>
+          <Route element={<SingleTaskList/>} path='/tasks/:id'/>
+        </Routes>
+      </Router>
+    </TaskProvider>
   );
 }
 
