@@ -33,6 +33,10 @@ const SingleTaskList = () => {
 
   const onDeleteTask = (task_id) => {
     dispatch({type:ACTIONS.DELETE_TASK,payload:{task_list_id:parseInt(id),task_id:task_id}})
+    dispatch({
+      type: ACTIONS.COMPLETED,
+      payload: { task_list_id: parseInt(id) },
+    });
   }
 
   const onCheck = (task) => {
